@@ -1,0 +1,60 @@
+# Stock Price Predictor Configuration
+# ====================================
+
+# Data settings
+data:
+  ticker: "AAPL"                      # Stock ticker symbol
+  period: "5y"                        # How far back to fetch (1y, 2y, 5y, 10y, max)
+  features:                           # Technical indicators to use as input features
+    - Close                           # Closing price
+    - Volume                          # Trading volume
+    - SMA_20                          # 20-day Simple Moving Average
+    - SMA_50                          # 50-day Simple Moving Average
+    - EMA_12                          # 12-day Exponential Moving Average
+    - EMA_26                          # 26-day Exponential Moving Average
+    - RSI                             # Relative Strength Index (momentum)
+    - MACD                            # Moving Average Convergence Divergence
+    - BB_upper                        # Bollinger Band upper
+    - BB_lower                        # Bollinger Band lower
+    - Daily_Return                    # Daily percentage return
+    - Volatility                      # 20-day rolling standard deviation
+
+  sequence_length: 60                 # Days of history to look at (input window)
+  forecast_days: 5                    # Days ahead to predict
+  train_ratio: 0.8                    # 80% train, 20% test
+
+# Model settings
+model:
+  hidden_size: 128                    # LSTM hidden state dimensions
+  num_layers: 2                       # Stacked LSTM layers
+  dropout: 0.2                        # Dropout between LSTM layers
+  bidirectional: false                # Bidirectional LSTM (look forward + backward)
+
+# Training settings
+training:
+  epochs: 100                         # Maximum epochs
+  batch_size: 32                      # Batch size
+  learning_rate: 0.001                # Adam learning rate
+  weight_decay: 1.0e-5                # L2 regularization
+  patience: 15                        # Early stopping patience
+  min_delta: 0.0001                   # Minimum improvement for early stopping
+  scheduler_factor: 0.5               # LR reduction factor on plateau
+  scheduler_patience: 5               # Epochs before reducing LR
+
+# Output settings
+output:
+  model_dir: "models"
+  plots_dir: "plots"
+
+# UI settings
+ui:
+  port: 7863
+  default_tickers:
+    - AAPL
+    - MSFT
+    - GOOGL
+    - AMZN
+    - TSLA
+    - NVDA
+    - META
+    - SPY
