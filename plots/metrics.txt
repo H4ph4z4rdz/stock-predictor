@@ -1,0 +1,7 @@
+Ticker: AAPL
+MAE: $9.19
+RMSE: $12.34
+MAPE: 4.16%
+Direction Accuracy: 44.7%
+Test samples: 229
+Epochs trained: 31
