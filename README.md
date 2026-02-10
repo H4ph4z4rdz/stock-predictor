@@ -39,6 +39,11 @@ These are the features the model sees. From top to bottom:
 
 Which features matter most? This is measured by shuffling each feature and seeing how much predictions change. The top features (yellow) have the most influence.
 
+### Demo: Multi-Ticker Performance
+![Demo Predictions](assets/demo_predictions.png)
+
+Left: Price prediction error (MAPE) across different stocks — MSFT and AAPL are easiest to predict (~4% error), while TSLA is hardest (~8.7%) due to its extreme volatility. Right: An example 25-day forecast showing how the model tracks actual price movement. The yellow dashed line is the prediction and the shaded area shows the uncertainty range.
+
 ## How It Works
 
 ```
